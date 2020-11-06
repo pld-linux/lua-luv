@@ -1,0 +1,36 @@
+diff -up luv-1.36.0-0/src/luv.c.lua54 luv-1.36.0-0/src/luv.c
+--- luv-1.36.0-0/src/luv.c.lua54	2020-06-30 13:51:22.099551123 -0400
++++ luv-1.36.0-0/src/luv.c	2020-06-30 13:51:32.299385613 -0400
+@@ -16,7 +16,7 @@
+  */
+ 
+ #include <lua.h>
+-#if (LUA_VERSION_NUM != 503)
++#if LUA_VERSION_NUM < 503
+ #include "compat-5.3.h"
+ #endif
+ #include "luv.h"
+diff -up luv-1.36.0-0/src/private.h.lua54 luv-1.36.0-0/src/private.h
+--- luv-1.36.0-0/src/private.h.lua54	2020-06-30 13:51:04.843831128 -0400
++++ luv-1.36.0-0/src/private.h	2020-06-30 13:51:13.179695862 -0400
+@@ -2,7 +2,7 @@
+ #define LUV_PRIVATE_H
+ 
+ #include <lua.h>
+-#if (LUA_VERSION_NUM != 503)
++#if LUA_VERSION_NUM < 503
+ #include "compat-5.3.h"
+ #endif
+ 
+diff -up luv-1.36.0-0/CMakeLists.txt.lua54 luv-1.36.0-0/CMakeLists.txt
+--- luv-1.36.0-0/CMakeLists.txt.lua54	2020-06-30 14:04:54.323356407 -0400
++++ luv-1.36.0-0/CMakeLists.txt	2020-06-30 14:05:16.083002829 -0400
+@@ -94,7 +94,7 @@ if (LUA)
+     NO_DEFAULT_PATH)
+   ELSEIF(LUA_EXEC_NAME MATCHES "lua.*")
+     FIND_LIBRARY(LUA_LIBRARIES
+-      NAMES lua lua53 lua52 lua51 liblua liblua53 liblua52 liblua51
++      NAMES lua lua54 lua53 lua52 lua51 liblua liblua54 liblua53 liblua52 liblua51
+       PATHS ${LUA_LIBDIR}
+       NO_DEFAULT_PATH)
+   ENDIF()
