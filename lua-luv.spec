@@ -1,4 +1,4 @@
-%global real_version 1.36.0
+%global real_version 1.43.0
 %global extra_version 0
 Summary:	Bare libuv bindings for lua
 Name:		lua-luv
@@ -8,9 +8,8 @@ License:	Apache v2.0
 BuildRequires:	cmake
 BuildRequires:	libuv-devel
 BuildRequires:	lua-devel >= 5.4
-Source0:	https://github.com/luvit/luv/archive/%{real_version}-%{extra_version}/luv-%{version}.tar.gz
-# Source0-md5:	5b9efde8652056faeb5ffc8f62f2b595
-Patch0:		luv-1.36.0-lua-5.4.patch
+Source0:	https://github.com/luvit/luv/releases/download/1.43.0-0/luv-1.43.0-0.tar.gz
+# Source0-md5:	294c7ea4d8d2e21414b90f1fb70182e9
 URL:		https://github.com/luvit/luv
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -34,7 +33,7 @@ Requires:	lua-luv = %{version}-%{release}
 Files required for lua-luv development
 
 %prep
-%autosetup -p1 -n luv-%{real_version}-%{extra_version}
+%autosetup -n luv-%{real_version}-%{extra_version}
 
 # Remove bundled dependencies
 rm -r deps
@@ -42,18 +41,14 @@ rm -r deps
 rm -f tests/test-dns.lua
 
 %build
-install -d build
-cd build
-%cmake \
+%cmake -B build \
 	-DWITH_SHARED_LIBUV=ON \
 	-DBUILD_MODULE=ON \
 	-DBUILD_SHARED_LIBS=ON \
 	-DWITH_LUA_ENGINE=Lua \
 	-DLUA_BUILD_TYPE=System \
 	-DINSTALL_LIB_DIR=%{_libdir} \
-	-DLUA_INCLUDE_DIR=%{_includedir}/lua5.4 \
-	..
-cd ..
+	-DLUA_INCLUDE_DIR=%{_includedir}/lua5.4
 
 %{__make} -C build
 
