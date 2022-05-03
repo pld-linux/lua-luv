@@ -1,8 +1,8 @@
 %bcond_without	lua51		# lua51 package
 %bcond_without	luajit		# lua51 package
 
-%global real_version 1.43.0
-%global extra_version 0
+%define		real_version	1.43.0
+%global		extra_version	0
 
 %define		luajit_abi	2.1
 
@@ -11,6 +11,10 @@ Name:		lua-luv
 Version:	%{real_version}.%{extra_version}
 Release:	1
 License:	Apache v2.0
+Group:		Libraries
+Source0:	https://github.com/luvit/luv/releases/download/1.43.0-0/luv-1.43.0-0.tar.gz
+# Source0-md5:	294c7ea4d8d2e21414b90f1fb70182e9
+URL:		https://github.com/luvit/luv
 BuildRequires:	cmake
 BuildRequires:	libuv-devel
 BuildRequires:	lua-devel >= 5.4
@@ -19,10 +23,9 @@ BuildRequires:	lua51-devel
 %endif
 %if %{with luajit}
 BuildRequires:	luajit-devel
+BuildRequires:	rpmbuild(macros) >= 1.605
 %endif
-Source0:	https://github.com/luvit/luv/releases/download/1.43.0-0/luv-1.43.0-0.tar.gz
-# Source0-md5:	294c7ea4d8d2e21414b90f1fb70182e9
-URL:		https://github.com/luvit/luv
+Requires:	lua54-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,13 +42,16 @@ we'll have a copy locally tailored for lua.
 
 %package devel
 Summary:	Development files for lua-luv
+Group:		Development/Libraries
 Requires:	lua-luv = %{version}-%{release}
+Requires:	lua54-devel
 
 %description devel
 Files required for lua-luv development
 
 %package -n lua51-luv
 Summary:	Bare libuv bindings for lua
+Requires:	lua51-libs
 
 %description -n lua51-luv
 This library makes libuv available to lua scripts. It was made for the
@@ -63,13 +69,16 @@ Package for Lua 5.1.
 
 %package -n lua51-luv-devel
 Summary:	Development files for lua51-luv
+Group:		Development/Libraries
 Requires:	lua51-luv = %{version}-%{release}
+Requires:	lua51-devel
 
 %description -n lua51-luv-devel
 Files required for lua51-luv development
 
 %package -n luajit-luv
 Summary:	Bare libuv bindings for lua
+Requires:	luajit-libs
 
 %description -n luajit-luv
 This library makes libuv available to lua scripts. It was made for the
@@ -87,13 +96,15 @@ Package for LuaJIT.
 
 %package -n luajit-luv-devel
 Summary:	Development files for luajit-luv
+Group:		Development/Libraries
 Requires:	luajit-luv = %{version}-%{release}
+Requires:	luajit-devel
 
 %description -n luajit-luv-devel
 Files required for luajit-luv development
 
 %prep
-%autosetup -n luv-%{real_version}-%{extra_version}
+%setup -q -n luv-%{real_version}-%{extra_version}
 
 # Remove bundled dependencies
 rm -r deps/{lua.cmake,luajit.cmake,libuv}
