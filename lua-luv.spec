@@ -206,6 +206,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/lua5.4/luv/luv.h
 %{_includedir}/lua5.4/luv/util.h
 
+%if %{with lua51}
 %files -n lua51-luv
 %defattr(644,root,root,755)
 %doc README.md
@@ -218,7 +219,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/lua5.1/luv/lreq.h
 %{_includedir}/lua5.1/luv/luv.h
 %{_includedir}/lua5.1/luv/util.h
+%endif
 
+%if %{with luajit}
 %files -n luajit-luv
 %defattr(644,root,root,755)
 %doc README.md
@@ -231,3 +234,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/luajit-%{luajit_abi}/luv/lreq.h
 %{_includedir}/luajit-%{luajit_abi}/luv/luv.h
 %{_includedir}/luajit-%{luajit_abi}/luv/util.h
+%endif
