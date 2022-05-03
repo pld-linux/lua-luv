@@ -1,6 +1,10 @@
 %bcond_without	lua51		# lua51 package
 %bcond_without	luajit		# lua51 package
 
+%ifnarch %{ix86} %{x8664} %{arm} aarch64 mips mips64 mipsel ppc
+%undefine	with_luajit
+%endif
+
 %define		real_version	1.43.0
 %global		extra_version	0
 
