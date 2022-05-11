@@ -1,5 +1,5 @@
 %bcond_without	lua51		# lua51 package
-%bcond_without	luajit		# lua51 package
+%bcond_without	luajit		# luajit package
 
 %ifnarch %{ix86} %{x8664} %{arm} aarch64 mips mips64 mipsel ppc
 %undefine	with_luajit
@@ -16,7 +16,7 @@ Version:	%{real_version}.%{extra_version}
 Release:	1
 License:	Apache v2.0
 Group:		Libraries
-Source0:	https://github.com/luvit/luv/releases/download/1.43.0-0/luv-1.43.0-0.tar.gz
+Source0:	https://github.com/luvit/luv/releases/download/%{real_version}-%{extra_version}/luv-%{version}.tar.gz
 # Source0-md5:	294c7ea4d8d2e21414b90f1fb70182e9
 URL:		https://github.com/luvit/luv
 BuildRequires:	cmake
