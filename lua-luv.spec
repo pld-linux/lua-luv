@@ -22,12 +22,12 @@ URL:		https://github.com/luvit/luv
 BuildRequires:	cmake
 BuildRequires:	libuv-devel
 BuildRequires:	lua-devel >= 5.4
+BuildRequires:	rpmbuild(macros) >= 1.605
 %if %{with lua51}
 BuildRequires:	lua51-devel
 %endif
 %if %{with luajit}
 BuildRequires:	luajit-devel
-BuildRequires:	rpmbuild(macros) >= 1.605
 %endif
 Requires:	lua54-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
