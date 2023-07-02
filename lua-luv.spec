@@ -19,7 +19,7 @@ Group:		Libraries
 Source0:	https://github.com/luvit/luv/releases/download/%{real_version}-%{extra_version}/luv-%{real_version}-%{extra_version}.tar.gz
 # Source0-md5:	04eebf1c813c7af33daf2c0f711b242d
 URL:		https://github.com/luvit/luv
-BuildRequires:	cmake
+BuildRequires:	cmake >= 2.8
 BuildRequires:	libuv-devel
 BuildRequires:	lua-devel >= 5.4
 BuildRequires:	rpmbuild(macros) >= 1.605
