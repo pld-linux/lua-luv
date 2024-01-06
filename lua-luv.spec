@@ -5,7 +5,7 @@
 %undefine	with_luajit
 %endif
 
-%define		real_version	1.45.0
+%define		real_version	1.47.0
 %define		extra_version	0
 
 %define		luajit_abi	2.1
@@ -17,9 +17,9 @@ Release:	1
 License:	Apache v2.0
 Group:		Libraries
 Source0:	https://github.com/luvit/luv/releases/download/%{real_version}-%{extra_version}/luv-%{real_version}-%{extra_version}.tar.gz
-# Source0-md5:	2d3b97ae616528ad934ac5df704c5a6f
+# Source0-md5:	fd4e6ede28802c521d0eb50ec31c7f0e
 URL:		https://github.com/luvit/luv
-BuildRequires:	cmake >= 2.8.12
+BuildRequires:	cmake >= 3.5
 BuildRequires:	libuv-devel
 BuildRequires:	lua-devel >= 5.4
 BuildRequires:	rpmbuild(macros) >= 1.605
