@@ -6,7 +6,7 @@
 %endif
 
 %define		real_version	1.51.0
-%define		extra_version	1
+%define		extra_version	2
 
 %define		luajit_abi	2.1
 
@@ -17,7 +17,7 @@ Release:	1
 License:	Apache v2.0
 Group:		Libraries
 Source0:	https://github.com/luvit/luv/releases/download/%{real_version}-%{extra_version}/luv-%{real_version}-%{extra_version}.tar.gz
-# Source0-md5:	664968d892b33248047eb44c13e83a82
+# Source0-md5:	68bb26ef0e42e531220e8c2ee44ff15c
 URL:		https://github.com/luvit/luv
 BuildRequires:	cmake >= 3.10
 BuildRequires:	libuv-devel
